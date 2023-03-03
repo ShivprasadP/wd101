@@ -7,20 +7,20 @@ registrationForm.addEventListener('submit', function(event) {
   const nameInput = document.getElementById('name');
   const emailInput = document.getElementById('email');
   const passwordInput = document.getElementById('password');
-  const birthdateInput = document.getElementById('birthdate');
+  const dobInput = document.getElementById('dob');
   const termsInput = document.getElementById('terms');
 
   const name = nameInput.value;
   const email = emailInput.value;
   const password = passwordInput.value;
-  const birthdate = birthdateInput.value;
+  const dob = dobInput.value;
   const terms = termsInput.checked;
 
   const validEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/g;
 
   const validname = /\d+$/g;
 
-  if (!name || !email || !password || !birthdate || !terms) {
+  if (!name || !email || !password || !dob || !terms) {
     document.getElementById('error').innerHTML='<i class="fa-solid fa-circle-exclamation"></i>Please fill out all required fields.';
     return;
   }
@@ -43,8 +43,8 @@ registrationForm.addEventListener('submit', function(event) {
   }
 
   const today = new Date();
-  const birthdateDate = new Date(birthdate);
-  const ageInMilliseconds = today - birthdateDate;
+  const dobDate = new Date(dob);
+  const ageInMilliseconds = today - dobDate;
   const ageInYears = ageInMilliseconds / 1000 / 60 / 60 / 24 / 365.25;
 
   if (ageInYears < 18 ) {
@@ -70,9 +70,9 @@ registrationForm.addEventListener('submit', function(event) {
     passwordCell.textContent = password;
     row.appendChild(passwordCell);
 
-    const birthdateCell = document.createElement('td');
-    birthdateCell.textContent = birthdate;
-    row.appendChild(birthdateCell);
+    const dobCell = document.createElement('td');
+    dobCell.textContent = dob;
+    row.appendChild(dobCell);
 
     registrationTableBody.appendChild(row);
 
