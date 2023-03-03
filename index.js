@@ -15,6 +15,7 @@ registrationForm.addEventListener('submit', function(event) {
   const email = emailInput.value;
   const password = passwordInput.value;
   const dob = dobInput.value;
+  const terms = termsInput.checked;
 
   const validEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/g;
 
@@ -74,12 +75,9 @@ registrationForm.addEventListener('submit', function(event) {
     dobCell.textContent = dob;
     row.appendChild(dobCell);
     
-    termsInput.addEventListener("change",function(){
-    const terms = termsInput.checked;
     const termsCell = document.createElement('td');
     termsCell.textContent = terms;
     row.appendChild(termsCell);
-   }
     
 
     registrationTableBody.appendChild(row);
