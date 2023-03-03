@@ -1,53 +1,87 @@
-// Retrieve the table body element
+const registrationForm = document.getElementById("registration-form");
 const registrationData = document.getElementById("registration-table-body");
 
-// Define a function to populate the table body with data from localStorage
-function populateTable() {
-  // Retrieve the array of objects from localStorage
-  const registrations = JSON.parse(localStorage.getItem("registrations")) || [];
 
-  // Loop through the array and create a table row for each object
-  registrations.forEach(registration => {
-    const newRow = document.createElement("tr");
-    const nameCell = document.createElement("td");
-    const emailCell = document.createElement("td");
-    const passwordCell = document.createElement("td");
-    const dobCell = document.createElement("td");
-    nameCell.textContent = registration.name;
-    emailCell.textContent = registration.email;
-    passwordCell.textContent = registration.password;
-    dobCell.textContent = registration.dob;
-    newRow.appendChild(nameCell);
-    newRow.appendChild(emailCell);
-    newRow.appendChild(passwordCell);
-    newRow.appendChild(dobCell);
-    registrationData.appendChild(newRow);
-  });
-}
+registrationForm.addEventListener('submit', function(event) {
+  event.preventDefault();
 
-// Call the populateTable function when the page is loaded
-window.addEventListener("load", populateTable);
+  const nameInput = document.getElementById('name');
+  const emailInput = document.getElementById('email');
+  const passwordInput = document.getElementById('password');
+  const dobInput = document.getElementById('dob');
+  const termsInput = document.getElementById('terms');
 
-// Add an event listener to the form submission
-const registrationForm = document.getElementById("registration-form");
-registrationForm.addEventListener("submit", event => {
-  event.preventDefault(); // prevent default form submission
+  const name = nameInput.value;
+  const email = emailInput.value;
+  const password = passwordInput.value;
+  const dob = dobInput.value;
+  const terms = termsInput.checked;
 
-  // Retrieve form data and add it to an array of objects
-  const formData = new FormData(registrationForm);
-  const registration = {
-    name: formData.get("name"),
-    email: formData.get("email"),
-    password: formData.get("password"),
-    dob: formData.get("dob")
-  };
-  const registrations = JSON.parse(localStorage.getItem("registrations")) || [];
-  registrations.push(registration);
-  localStorage.setItem("registrations", JSON.stringify(registrations));
+  const validEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/g;
 
-  // Call the populateTable function to update the table with the new data
-  populateTable();
+  const validname = /\d+$/g;
 
-  // Reset the form
-  registrationForm.reset();
+  if (!name || !email || !password || !dob || !terms) {
+    document.getElementById('error').innerHTML='<i class="fa-solid fa-circle-exclamation"></i>Please fill out all required fields.';
+    return;
+  }
+  
+  if(name=="" || validname.test(name))
+  {
+    document.getElementById("name-error").innerHTML='<i class="fa-solid fa-circle-exclamation"></i>Please enter valid name.';
+    return;
+  }
+
+  if(email=="" || !validEmail.test(email))
+  {
+    document.getElementById("email-error").innerHTML='<i class="fa-solid fa-circle-exclamation"></i>Please enter valid email address.';
+    return;
+  }
+
+  if (password.length < 8) {
+    document.getElementById('password-error').innerHTML='<i class="fa-solid fa-circle-exclamation"></i>Password must be at least 8 characters long.';
+    return;
+  }
+
+  const today = new Date();
+  const dobDate = new Date(dob);
+  const ageInMilliseconds = today - dobDate;
+  const ageInYears = ageInMilliseconds / 1000 / 60 / 60 / 24 / 365.25;
+
+  if (ageInYears < 18 ) {
+    document.getElementById('birthday-error').innerHTML='<i class="fa-solid fa-circle-exclamation"></i>You must be at least 18 years old to register.';
+    return;
+  }else if(ageInYears > 55)
+  {
+    document.getElementById('birthday-error').innerHTML='<i class="fa-solid fa-circle-exclamation"></i>You must be under 55 years old to register.';
+    return;
+  }
+
+    const row = document.createElement('tr');
+
+    const nameCell = document.createElement('td');
+    nameCell.textContent = name;
+    row.appendChild(nameCell);
+
+    const emailCell = document.createElement('td');
+    emailCell.textContent = email;
+    row.appendChild(emailCell);
+
+    const passwordCell = document.createElement('td');
+    passwordCell.textContent = password;
+    row.appendChild(passwordCell);
+
+    const dobCell = document.createElement('td');
+    dobCell.textContent = dob;
+    row.appendChild(dobCell);
+
+    registrationTableBody.appendChild(row);
+
+    alert('Registration successful!');
+
+    document.getElementById("name-error").textContent = "";
+    document.getElementById("email-error").textContent = "";
+    document.getElementById("password-error").textContent = "";
+    document.getElementById("birthday-error").textContent = "";
+    
 });
