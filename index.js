@@ -1,22 +1,6 @@
 const registrationForm = document.getElementById('registration-form');
 const registrationTableBody = document.getElementById('registration-table-body');
 
-const userEntries=[];
-const saveUserForm=(event)=>{
-  event.preventDefault();
-  const name = document.getElementById('name').value;
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
-  const dob = document.getElementById('dob').value;
-  const terms = document.getElementById('terms').checked;
-  
-  const entry={name,email,password,dob,terms};
-  
-  userEntries.push(entry);
-  localstorage.setItem("user-entries",JSON.stringify(userEntries));
-}
-registrationForm.addEventListener("submit",saveUserForm);
-                   
 registrationForm.addEventListener('submit', function(event) {
   event.preventDefault();
 
@@ -89,10 +73,6 @@ registrationForm.addEventListener('submit', function(event) {
     const dobCell = document.createElement('td');
     dobCell.textContent = dob;
     row.appendChild(dobCell);
-  
-    const termsCell = document.createElement('td');
-    termsCell.textContent = terms;
-    row.appendChild(termsCell);
 
     registrationTableBody.appendChild(row);
 
