@@ -89,6 +89,10 @@ registrationForm.addEventListener('submit', function(event) {
     const dobCell = document.createElement('td');
     dobCell.textContent = dob;
     row.appendChild(dobCell);
+  
+    const termsCell = document.createElement('td');
+    termsCell.textContent = terms;
+    row.appendChild(termsCell);
 
     registrationTableBody.appendChild(row);
 
