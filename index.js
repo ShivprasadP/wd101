@@ -8,7 +8,7 @@ const saveUserForm=(event)=>{
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
   const dob = document.getElementById('dob').value;
-  const terms = document.getElementById('terms').values;
+  const terms = document.getElementById('terms').checked;
   
   const entry={name,email,password,dob,terms};
   
