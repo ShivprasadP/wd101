@@ -109,3 +109,4 @@ retrieveRecords();
     document.getElementById("birthday-error").textContent = "";
     
 });
+ 
