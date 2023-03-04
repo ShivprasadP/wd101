@@ -1,0 +1,39 @@
+body {
+    --bs-body-font-family: var(--bs-font-monospace);
+    --bs-body-line-height: 1.4;
+    --bs-body-bg: var(--bs-gray-100);
+}
+
+span{
+    font-size: 10px;
+}
+
+.table{
+    border: 3px;
+}
+
+label{
+    float: left;
+    margin-left: 38%;
+}
+
+input{
+    float: right;
+    margin-right: 34%;
+}
+
+button{
+    margin-top: 3%;
+    border-radius: 9px;
+    background-image: linear-gradient(rgb(97, 92, 253), rgb(143, 47, 217));
+}
+
+button:hover{
+    background-image: linear-gradient(rgb(143, 47, 217),rgb(97, 92, 253));
+}
+
+span{
+    float: right;
+    margin-top: 3px;
+    color: rgb(226, 0, 0);
+}
