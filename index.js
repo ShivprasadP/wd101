@@ -66,14 +66,14 @@ registrationForm.addEventListener('submit', function(event) {
         terms: terms,
     };
 
-    window.localStorage.setItem("User-Data",JSON.stringify(data));  
+    localStorage.setItem("User-Data",JSON.stringify(data));  
 }
 store();
 
 function retrieveRecords(){ 
 const registrationTableBody = document.getElementById('registration-table-body');
 
-  var myData = JSON.parse(window.localStorage.getItem('User-Data'));
+  var myData = JSON.parse(localStorage.getItem('User-Data'));
   const row = document.createElement('tr');
 
     const nameCell = document.createElement('td');
