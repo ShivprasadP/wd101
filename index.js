@@ -19,16 +19,9 @@ registrationForm.addEventListener('submit', function(event) {
   const validEmail = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
   
 
-  const validname = /\d+$/g;
 
-  if (!name || !email || !dob) {
+  if (!email || !dob) {
     document.getElementById('error').innerHTML='<i class="fa-solid fa-circle-exclamation"></i>Please fill out all required fields.';
-    return;
-  }
-  
-  if(name=="" || validname.test(name))
-  {
-    document.getElementById("name-error").innerHTML='<i class="fa-solid fa-circle-exclamation"></i>Please enter valid name.';
     return;
   }
 
@@ -89,7 +82,6 @@ registrationForm.addEventListener('submit', function(event) {
 }
 store();
 
-    document.getElementById("name-error").textContent = "";
     document.getElementById("email-error").textContent = "";
     document.getElementById("birthday-error").textContent = "";
     
