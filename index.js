@@ -21,7 +21,7 @@ registrationForm.addEventListener('submit', function(event) {
 
   const validname = /\d+$/g;
 
-  if (!name || !email || !dob ) {
+  if (!name || !email || !dob) {
     document.getElementById('error').innerHTML='<i class="fa-solid fa-circle-exclamation"></i>Please fill out all required fields.';
     return;
   }
