@@ -38,11 +38,6 @@ registrationForm.addEventListener('submit', function(event) {
     return;
   }
 
-  if (password.length < 8) {
-    document.getElementById('password-error').innerHTML='<i class="fa-solid fa-circle-exclamation"></i>Password must be at least 8 characters long.';
-    return;
-  }
-
   const today = new Date();
   const dobDate = new Date(dob);
   const ageInMilliseconds = today - dobDate;
@@ -96,7 +91,6 @@ store();
 
     document.getElementById("name-error").textContent = "";
     document.getElementById("email-error").textContent = "";
-    document.getElementById("password-error").textContent = "";
     document.getElementById("birthday-error").textContent = "";
     
 });
