@@ -16,7 +16,8 @@ registrationForm.addEventListener('submit', function(event) {
   const dob = dobInput.value;
   const terms = termsInput.checked;
 
-  const validEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/g;
+  const validEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  
 
   const validname = /\d+$/g;
 
