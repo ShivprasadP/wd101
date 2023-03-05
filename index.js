@@ -65,7 +65,7 @@ registrationForm.addEventListener('submit', function(event) {
         dob: dob,
         terms: terms,
     };
-    var num=window.localStorage.length;
+    var num=window.localStorage.length+1;
     window.localStorage.setItem(num,JSON.stringify(data));  
     var myData = JSON.parse(window.localStorage.getItem(num));
   const row = document.createElement('tr');
@@ -91,7 +91,6 @@ registrationForm.addEventListener('submit', function(event) {
     row.appendChild(termsCell);
 
     registrationTableBody.appendChild(row);
-    num++;
 
     
 }
