@@ -66,7 +66,8 @@ registrationForm.addEventListener('submit', function(event) {
         terms: terms,
     };
 
-    window.localStorage.setItem("User-Data",JSON.stringify(data));  
+    var num=window.localStorage.length+1;
+    window.localStorage.setItem(num,JSON.stringify(data));  
 }
 store();
 
