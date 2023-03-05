@@ -16,7 +16,7 @@ registrationForm.addEventListener('submit', function(event) {
   const dob = dobInput.value;
   const terms = termsInput.checked;
 
-  const validEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  const validEmail = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
   
 
   const validname = /\d+$/g;
@@ -48,12 +48,8 @@ registrationForm.addEventListener('submit', function(event) {
   const ageInMilliseconds = today - dobDate;
   const ageInYears = ageInMilliseconds / 1000 / 60 / 60 / 24 / 365.25;
 
-  if (ageInYears < 18 ) {
-    document.getElementById('birthday-error').innerHTML='<i class="fa-solid fa-circle-exclamation"></i>You must be at least 18 years old to register.';
-    return;
-  }else if(ageInYears > 55)
-  {
-    document.getElementById('birthday-error').innerHTML='<i class="fa-solid fa-circle-exclamation"></i>You must be under 55 years old to register.';
+  if (ageInYears < 18 || ageInYears > 55 ) {
+    document.getElementById('birthday-error').innerHTML='<i class="fa-solid fa-circle-exclamation"></i>Your age must between 18 and 55 years to register.';
     return;
   }
 
@@ -68,7 +64,8 @@ registrationForm.addEventListener('submit', function(event) {
     };
     var num=window.localStorage.length+1;
     window.localStorage.setItem(num,JSON.stringify(data));  
-    var myData = JSON.parse(window.localStorage.getItem(num));
+    
+      var myData = JSON.parse(window.localStorage.getItem(num));
   const row = document.createElement('tr');
 
     const nameCell = document.createElement('td');
