@@ -96,8 +96,6 @@ registrationForm.addEventListener('submit', function(event) {
 }
 store();
 
-    alert('Registration successful!');
-
     document.getElementById("name-error").textContent = "";
     document.getElementById("email-error").textContent = "";
     document.getElementById("password-error").textContent = "";
