@@ -20,31 +20,35 @@
     <title>Registration Form</title>
     <script>window.onload = function() {
       const registrationTableBody = document.getElementById('registration-table-body');
+var num = window.localStorage.length;
+  for(i=1;i<=num;i++)
+  {
+    var myData = JSON.parse(window.localStorage.getItem(num));
+  const row = document.createElement('tr');
 
-var myData = JSON.parse(window.localStorage.getItem('User-Data'));
-const row = document.createElement('tr');
+    const nameCell = document.createElement('td');
+    nameCell.textContent = myData.name;
+    row.appendChild(nameCell);
 
-  const nameCell = document.createElement('td');
-  nameCell.textContent = myData.name;
-  row.appendChild(nameCell);
+    const emailCell = document.createElement('td');
+    emailCell.textContent = myData.email;
+    row.appendChild(emailCell);
 
-  const emailCell = document.createElement('td');
-  emailCell.textContent = myData.email;
-  row.appendChild(emailCell);
+    const passwordCell = document.createElement('td');
+    passwordCell.textContent = myData.password;
+    row.appendChild(passwordCell);
 
-  const passwordCell = document.createElement('td');
-  passwordCell.textContent = myData.password;
-  row.appendChild(passwordCell);
+    const dobCell = document.createElement('td');
+    dobCell.textContent = myData.dob;
+    row.appendChild(dobCell);
 
-  const dobCell = document.createElement('td');
-  dobCell.textContent = myData.dob;
-  row.appendChild(dobCell);
+    const termsCell = document.createElement('td');
+    termsCell.textContent = myData.terms;
+    row.appendChild(termsCell);
 
-  const termsCell = document.createElement('td');
-  termsCell.textContent = myData.terms;
-  row.appendChild(termsCell);
+    registrationTableBody.appendChild(row);
 
-  registrationTableBody.appendChild(row);
+  }
     };</script>
   </head>
   <body>

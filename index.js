@@ -67,14 +67,7 @@ registrationForm.addEventListener('submit', function(event) {
     };
     var num=window.localStorage.length+1;
     window.localStorage.setItem(num,JSON.stringify(data));  
-    
-}
-store();
-
-function retrieveRecords(){ 
-const registrationTableBody = document.getElementById('registration-table-body');
-
-  var myData = JSON.parse(window.localStorage.getItem('User-Data'));
+    var myData = JSON.parse(window.localStorage.getItem(num));
   const row = document.createElement('tr');
 
     const nameCell = document.createElement('td');
@@ -99,9 +92,10 @@ const registrationTableBody = document.getElementById('registration-table-body')
 
     registrationTableBody.appendChild(row);
 
+    
 }
+store();
 
-retrieveRecords();
     alert('Registration successful!');
 
     document.getElementById("name-error").textContent = "";
